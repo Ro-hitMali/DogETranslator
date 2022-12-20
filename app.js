@@ -7,7 +7,7 @@ var outputDiv = document.querySelector("#output");
 var serverURL = "https://api.funtranslations.com/translate/doge.json";
 
 function getTranslationURL (text){
-    return serverURL + "?" + text
+    return serverURL + "?" + "text=" + text;
 }
 
 function errorHandler(error){
@@ -24,10 +24,10 @@ function clickHandler() {
   fetch(getTranslationURL(inputText)) 
   .then(response => response.json())
   .then(json => {
-    var translateTxt = json.content.translated
+    var translateTxt = json.contents.translated
     outputDiv.innerText = translateTxt;
    })
-    .catch(errorHandler)
+    .catch(errorHandle);
 };
 
 buttonTranslate.addEventListener("click", clickHandler);
